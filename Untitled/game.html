@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZMATH</title>
+    <title>Math Game</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,17 +15,9 @@
 
 </head>
 <body style="overflow: hidden";>
-    
-    <h1 id = "level-title"></h1>
-    <div id = "header">    
-        <div class="progress">
-            <div class="progress__fill"></div>
-            <span class="progress__text">0%</span>
-        </div>
-        
-        <div onclick="window.location.href='level.html';" class="home-button"></div>
+    <div id = "header">
     </div>
-    
+    <h1 id = "level-title"></h1>
     <h1 id = "question-text"></h1>
     <div class = "choice-container">
         <div class = "choice-button", id = "optionA", onclick="checkAnswer(0)"></div>
@@ -35,19 +27,16 @@
     </div>
     <div id = "overlay-game">
     </div>
-    <div id = "next-level">
-        Congratulations!
-        <button id = "next-level-button" onclick="startNextLevel()">Next Level</button>
-        <button id = "next-level-button" onclick="window.location.href='level.html';">Level Select</button>
+
+
+    <div class="progress">
+        <div class="progress__fill"></div>
+        <span class="progress__text">0%</span>
     </div>
-
-
-    
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>
-<script>localStorage.setItem("screen", "game");</script>
 <script src="levels.js"></script>
 <script src="game.js"></script>
 </html>

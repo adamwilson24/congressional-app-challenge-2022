@@ -49,19 +49,6 @@ body {
     /*white light*/ -1px -1px -120px rgba(255, 255, 255, 0.5);
 }
 
-.game-link {
-  font-size: 2em;
-  cursor: pointer;
-  text-decoration: underline;
-  color: #1D3557;
-  transition-duration: 0.25s;
-}
-
-.game-link:hover {
-  color: #457B9D;
-  font-weight: bold;
-}
-
 #overlay-game {
   display: none;
   position: absolute;
@@ -77,45 +64,23 @@ body {
   text-align: center;
   font-weight: bold;
   line-height: 100vh;
-  z-index: 100;
-}
-
-#next-level {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  float: left;
-  opacity: 0;
-  background-color: rgb(106, 230, 57);
-  font-family: "Poppins", sans-serif;
-  letter-spacing: 5px;
-  font-size: 10vw;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  font-weight: bold;
-  line-height: 50vh;
-  z-index: 100;
 }
 
 #level-title {
-  position: relative;
+  position: absolute;
   display: block;
   font-family: "Poppins", sans-serif;
   width: fit-content;
   letter-spacing: 5px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 10vh;
+  width: 100%;
+  font-size: 10em;
   color: #E63946;
   margin-bottom: 0;
   padding-top: 2vh;
   text-align: center;
   top: 0;
-  padding: 0;
-  z-index: 10;
 }
 
 #question-text {
@@ -126,14 +91,10 @@ body {
   letter-spacing: 5px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 12vh;
+  font-size: 5em;
   color: #457B9D;
-  text-shadow: 0.3vw 0.3vw 0px #1D3557;
-  margin-top: 10vh;
-}
-
-#main-menu {
-  background-color: #E63946;
+  text-shadow: 0.3vw 0.3vw 2px #1D3557;
+  margin-top: 20vh;
 }
 
 .choice-container {
@@ -171,55 +132,49 @@ body {
 }
 
 .level-button {
-  font-family: "Poppins", sans-serif;
-  position: relative;
   background-color: #1D3557;
   width: 20vw;
   height: 10vh;
   padding: 1vw;
   margin-top: 10vh;
+  font-family: "Poppins", sans-serif;
   color: #fff;
   font-size: 2em;
   text-align: center;
   border-radius: 1vw;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
 }
 
-.level-button-unclickable{
+/*.level-button::after{
+  content: "";
+  left: 0;
+  top: 0;
   display: block;
   width: 20vw;
   height: 10vh;
   padding: 1vw;
+  margin-top: 10vh;
+  font-size: 2em;
   border-radius: 1vw;
   transition-duration: 0.5s;
-  background-color: rgba(33, 33, 33, 0.7);
-  cursor: not-allowed;
-  background-image: url("lock.svg");
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: 5vw;
+  background-color: #333;
+  top:0;
+  left:0;
+  opacity: .7;
 }
-
-
+*/
 .level-button:hover {
   cursor: pointer;
-  background-color: #457B9D;
-  scale: 1.1;
-}
-
-.level-button-unclickable:hover {
-  scale: 1;
-  background-color: #424242;
-  cursor: not-allowed;
+  background: #457B9D;
 }
 
 #header {
   position: absolute;
-  height: 10vh;
+  height: 5vh;
   width: 100%;
   background-color: rgb(51, 51, 51);
-  /*border-bottom: #666666 solid 1vh;*/
   top: 0;
+  height: 4.5em;
 }
 
 #footer {
@@ -440,22 +395,18 @@ body {
 
 /*Progress Bar*/
 .progress {
-  margin-top: 3vh;
-  margin-left: 2vw;
   position: relative;
-  width: 20vw;
-  height: 5vh;
-  background: #755c5e;
-  border-radius: .5vw;
+  width: 210px;
+  height: 30px;
+  background: #f0979f;
+  border-radius: 5px;
   overflow: hidden;
 }
-
 .progress__fill {
   width: 0%;
   height: 100%;
-  background-color: #755c5e;
-  transition: all 0.5s;
-  box-shadow: back;
+  background: #E63946;
+  transition: all 0.2s;
 }
 .progress__text {
   position: absolute;
@@ -464,61 +415,4 @@ body {
   transform: translateY(-50%);
   font: bold 14px 'Poppins', sans-serif;
   color: #fff;
-  text-shadow: #222222 .1vw .1vw 3px;
-}
-
-#next-level-button {
-  position: relative;
-  display: block;
-  width: 10vw;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: "Poppins", sans-serif;
-  font-size: 18;
-  font-weight: 600;
-  background: #9fa4a4;
-  text-align: center;
-  padding: 0.5vw;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow, transform;
-  transition-property: box-shadow, transform;
-  margin-top: 10vh;
-  scale: 2;
-  font-weight: bold;
-
-}
-
-#next-level-button:hover,
-#next-level-button:focus, #next-level-button:active {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.home-button {
-  position: absolute;
-  width: 7vh;
-  height: 7vh;
-  background-image: url(home.svg);
-  background-repeat: no-repeat;
-  margin-top: 2vh;
-  margin-right: 2vw;
-  right: 0;
-  top: 0;
-  float: right;
-  filter: invert(23%) sepia(84%) saturate(2029%) hue-rotate(335deg) brightness(106%) contrast(88%);
-  transition-duration: 0.3s;
-  z-index: 1000;
-}
-.home-button:hover{
-  cursor: pointer;
-  filter: invert(42%) sepia(6%) saturate(1511%) hue-rotate(306deg) brightness(85%) contrast(83%);
 }

@@ -16,10 +16,11 @@
     <!--temporary title>--> 
     <a href="level.html" class="play-button">Play</a>
     
+
     <div class="popup" id="popup-1">
-      <div class="overlay" onclick="togglePopup('popup-1')"></div>
+      <div class="overlay" onclick="togglePopup()"></div>
       <div class="content">
-        <div class="close-btn" onclick="togglePopup('popup-1')">&times;</div>
+        <div class="close-btn" onclick="togglePopup()">&times;</div>
         <h1 class="instructions-title">Instructions</h1>
         <ul class="instructions-list" style="list-style-type: disc;">
           <li style="padding-bottom: 0.5em;">
@@ -40,21 +41,8 @@
       </div>
     </div>
 
-    <div class="popup" id="popup-2">
-      <div class="overlay" onclick="togglePopup('popup-2')"></div>
-      <div class="content">
-        <div class="close-btn" onclick="togglePopup('popup-2')">&times;</div>
-        <h1 class="instructions-title">Settings</h1>
-        <ul class="instructions-list" style="list-style-type: disc;">
-          <a class = "game-link" onclick="localStorage.setItem('levelsUnlocked', 1);">Reset Progress</a>
-        </ul>
-      </div>
-
-    <a href="#" class="instructions-button" onclick="togglePopup('popup-1')"
+    <a href="#" class="instructions-button" onclick="togglePopup()"
       >Instructions</a>
-
-      <a href="#" class="instructions-button" onclick="togglePopup('popup-2')"
-      >Settings</a>
 
     <div id="footer">
       &copy; Copyright 2022 - Adam Wilson, Mason McManus, Carter Lator <br />
