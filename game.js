@@ -45,15 +45,17 @@ function updateProgressBar(progressBar, num) {
     }
     if(value > 90) {
         getNextLevel();
+    } else {
+        newQuestion();
     }
     var r, g;
     if(value > 50)
     {
-        r = ((100-value) * (255/50));
-        g = 255;
+        r = ((100-value) * (225/50));
+        g = 225;
     } else {
-        r = 255;
-        g = value*2 * (255/100);
+        r = 225;
+        g = value*2 * (225/100);
     }
     progressBar.querySelector(".progress__fill").style.backgroundColor = `rgb(${r}, ${g}, 0)`;
     progressBar.querySelector(".progress__fill").style.width = `${value}%`;
@@ -106,6 +108,24 @@ function newQuestion() {
         case 4:
             getSubtraction(1,20);
             break;
+        case 5:
+            getMultiplication(2,10);
+            break;
+        case 6:
+            getMultiplication(5,20);
+            break;
+        case 7:
+            getDivision(2,8);
+            break;
+        case 8:
+            getDivision(2,15);
+            break;
+        case 9:
+            getMod(2,10);
+            break;
+        case 10:
+            getMod(2,50);
+            break;
         default: break;
     }
 }
@@ -134,14 +154,14 @@ function getMultiplication(lower, upper) {
     question = `What is ${num1} x ${num2}?`;
     questionText.innerHTML = question;
     answerIndex = randomNumber(0, 4);
-    nextNum = randomNumber(3, upper * upper);
+    nextNum = randomNumber(3, ((upper - 3) * upper));
 
     for(var i = 0; i < 4; i ++) {
         while(nextNum == num1 * num2) {
-            nextNum = randomNumber(3, (upper * upper));
+            nextNum = randomNumber(3, ((upper - 3) * upper));
         }
         choices[i].innerHTML = nextNum;
-        nextNum = randomNumber(3, (upper * upper));
+        nextNum = randomNumber(3, ((upper - 3) * upper));
     }
     choices[answerIndex].innerHTML = num1 * num2;
 }
@@ -159,29 +179,48 @@ function getSubtraction(lower, upper) {
 
     for(var i = 0; i < 4; i ++) {
         while(nextNum == num1 - num2) {
-            nextNum = randomNumber(lower + 6, upper * 2);
+            nextNum = randomNumber(lower, upper);
         }
         choices[i].innerHTML = nextNum;
-        nextNum = randomNumber(lower + 6, upper * 2);
+        nextNum = randomNumber(lower, upper);
     }
     choices[answerIndex].innerHTML = num1 - num2;
 }
+
 function getDivision(lower, upper) {
-    num1 = randomNumber(lower, upper);
     num2 = randomNumber(lower, upper);
+    num1 = randomNumber(lower, upper) * num2;
     question = `What is ${num1} / ${num2}?`;
     questionText.innerHTML = question;
     answerIndex = randomNumber(0, 4);
-    nextNum = randomNumber(3, upper / upper);
+    nextNum = randomNumber(3, upper);
 
     for(var i = 0; i < 4; i ++) {
-        while(nextNum == num1 - num2) {
-            nextNum = randomNumber(3, (upper / upper));
+        while(nextNum == (num1 / num2)) {
+            nextNum = randomNumber(3, upper);
         }
         choices[i].innerHTML = nextNum;
-        nextNum = randomNumber(3, (upper / upper));
+        nextNum = randomNumber(3, upper);
     }
     choices[answerIndex].innerHTML = num1 / num2;
+}
+
+function getMod(lower, upper) {
+    num2 = randomNumber(lower, upper);
+    num1 = randomNumber(lower, upper);
+    question = `What is ${num1} % ${num2}?`;
+    questionText.innerHTML = question;
+    answerIndex = randomNumber(0, 4);
+    nextNum = randomNumber(3, upper);
+
+    for(var i = 0; i < 4; i ++) {
+        while(nextNum == (num1 % num2)) {
+            nextNum = randomNumber(3, upper);
+        }
+        choices[i].innerHTML = nextNum;
+        nextNum = randomNumber(3, upper);
+    }
+    choices[answerIndex].innerHTML = num1 % num2;
 }
 
 function randomNumber(min, max) {
@@ -192,6 +231,7 @@ async function checkAnswer(num) {
     var increase;
     for(var i = 0; i < 4; i ++) {
         choices[i].style.pointerEvents = "none";
+        choices[i].style.color = "#1D3557";
     }
     overlay.style.display = "block";
     overlay.style.color = "#fff";
@@ -208,31 +248,37 @@ async function checkAnswer(num) {
     tl.fromTo(overlay, 1, { x: "-100vw", opacity: 0 }, { x: 0, ease: Power2.easeOut, opacity: 1 });
     tl.fromTo(overlay, 1, { y:0, opacity: 1 }, { y: "-100vh", ease: Power2.easeOut, opacity: 0 }, "+=1");
     await sleep(1000)
-    newQuestion();
     questionText.style.opacity = 0;
     await sleep(2000);
     updateProgressBar(pBar, increase);
     overlay.style.display = "none";
     tl.fromTo(questionText, 1, { x: "-25vw", opacity: 0 }, { x: 0, ease: Power2.easeOut, opacity: 1 });
-    await sleep(1000);
     for(var i = 0; i < 4; i ++) {
         choices[i].style.pointerEvents = "all";
+        choices[i].style.color = "#fff";
     }
+    await sleep(1000);
 }
 
 function getNextLevel() {
     nextLevel.style.display = "block";
     tl.fromTo(nextLevel, 1, { x: "-100vw", opacity: 0 }, { x: 0, ease: Power2.easeOut, opacity: 1 });
-    unlockedLevelsGame ++;
-    localStorage.setItem("levelsUnlocked", unlockedLevelsGame);
+    if(levelNumber == unlockedLevelsGame) {
+        unlockedLevelsGame ++;
+        localStorage.setItem("levelsUnlocked", unlockedLevelsGame);
+    }
 }
 
 function startNextLevel() {
-    
     levelNumber ++;
-    questionText.style.innerHTML = "";
+    if(levelNumber > 10) {
+        open("level.html", "_self");
+    }
+    questionText.style.display = "none";
     localStorage.setItem("levelNumber", levelNumber);
+    tl.fromTo(questionText, 0.1, {opacity: 1}, {opacity: 0});
     tl.fromTo(nextLevel, 1, { x: 0, opacity: 1 }, { x: "100vw", ease: Power2.easeOut, opacity: 0 });
+    questionText.style.display = "block";
     updateProgressBar(pBar, -100);
     refreshPage();
 }

@@ -7,8 +7,13 @@ body {
   background-color: #f8f7ff;
 }
 
+audio {
+  margin-top: 100px;
+}
+
 .home-background {
-  background-image: url(ezmathbg4.svg);
+  background-image:url(ezmathbg4.svg);
+  height: 100vh;
 }
 .game-title {
   position: relative;
@@ -223,14 +228,12 @@ body {
 }
 
 #footer {
-  margin-top: 30em;
   font-family: "Poppins", sans-serif;
   padding-top: 5px;
-  padding-bottom: 20px;
-  position: sticky;
+  position: absolute;
   background-color: #222222;
   width: 100%;
-  height: 5vh;
+  height: fit-content;
   bottom: 0;
   color: #f8f7ff;
   text-align: center;
@@ -394,8 +397,11 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background: no-repeat center/cover url("space.jpg");
+  background-color: black;
+  background: center/cover url("space.jpg");
+  background-size: 35vw;
 }
+
 .fade {
   position: fixed;
   top: 0;
