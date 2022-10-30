@@ -27,4 +27,6 @@ What improvements would you make if you were to create a 2.0 version of your app
 If there was a 2.0 version of our app, we would include more features to help the users mathematical capabilities. For example we would add a placement test that would determine the user's previous math skills. This would further enhance the user's learning experience by putting them at the appropriate level. Another thing we would add to our app is an explanation for users who get a problem wrong. This would describe to them the correct process on how to solve the math equation, so they can learn and apply these strategies in the future.
 
 Please include a cover photo from your app
-![Mathware-cover-photo-2022](https://user-images.githubusercontent.com/104118496/198877502-51d4b0af-82a0-4a85-856a-318ad5861fb7.png)
+![CoverPhoto2022](https://user-images.githubusercontent.com/104118496/198877573-833804ec-89ac-4ae1-a48b-84257fd85658.png)
+
+
