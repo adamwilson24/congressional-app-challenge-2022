@@ -55,11 +55,14 @@ audio {
 }
 
 .game-link {
+  position: relative;
   font-size: 2em;
   cursor: pointer;
   text-decoration: underline;
   color: #1D3557;
   transition-duration: 0.25s;
+  border-radius: 0.75vw;
+  padding: 0.75vw;
 }
 
 .game-link:hover {
@@ -331,6 +334,7 @@ audio {
 }
 .instructions-list {
   text-align: left;
+  padding-top: 5vh;
 }
 .instructions-title {
   font-weight: bold;
@@ -524,7 +528,31 @@ audio {
   transition-duration: 0.3s;
   z-index: 1000;
 }
+
 .home-button:hover{
   cursor: pointer;
   filter: invert(42%) sepia(6%) saturate(1511%) hue-rotate(306deg) brightness(85%) contrast(83%);
+}
+
+#volume {
+  width: 10vh;
+  height: 10vh;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 2vh;
+  border-radius: 10000000000px;
+  transition-duration: 0.5s;
+  background-color: rgb(255, 255, 255);
+  background-image: url("Img/volume.png");
+  background-size: 6vh;
+  background-repeat: no-repeat;
+  background-position: 1.8vh;
+  filter: invert() brightness(0.8);
+}
+
+#volume:hover {
+  cursor: pointer;
+  background-color: rgb(0, 247, 255);
+  filter: invert() brightness(1);
 }

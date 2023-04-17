@@ -1,7 +1,10 @@
 var levelNumber = localStorage.getItem("levelNumber");
 var question, num1, num2;
 
-var correctSound = new Audio ("Sounds/mixkit-correct-positive-answer-949.mp3");
+const volumeButton = document.getElementById("volume");
+var correctSound = new Audio("Sounds/soundCorrect.wav");
+var incorrectSound = new Audio("Sounds/soundIncorrect.wav");
+var volume = true;
 
 const questionText = document.getElementById("question-text");
 const overlay = document.getElementById("overlay-game");
@@ -11,8 +14,6 @@ const choiceButtonA = document.getElementById("optionA");
 const choiceButtonB = document.getElementById("optionB");
 const choiceButtonC = document.getElementById("optionC");
 const choiceButtonD = document.getElementById("optionD");
-
-const audioCorrect = document.getElementById("audioCorrect");
 
 const choices = [choiceButtonA, choiceButtonB, choiceButtonC, choiceButtonD];
 
@@ -239,11 +240,16 @@ async function checkAnswer(num) {
         overlay.style.backgroundColor = "#6ae639";
         overlay.innerHTML = "Correct!";
         increase = 10;
-        //audioCorrect.play();
+        if(volume) {
+            correctSound.play();
+        }
     } else {
         overlay.style.backgroundColor = "#E63946";
         overlay.innerHTML = "Incorrect!";
         increase = -10;
+        if(volume) {
+            incorrectSound.play();
+        }
     }
     tl.fromTo(overlay, 1, { x: "-100vw", opacity: 0 }, { x: 0, ease: Power2.easeOut, opacity: 1 });
     tl.fromTo(overlay, 1, { y:0, opacity: 1 }, { y: "-100vh", ease: Power2.easeOut, opacity: 0 }, "+=1");
@@ -281,4 +287,14 @@ function startNextLevel() {
     questionText.style.display = "block";
     updateProgressBar(pBar, -100);
     refreshPage();
+}
+
+function toggleVolume() {
+    volume = !volume;
+
+    if(volume) {
+        volumeButton.style.backgroundImage = `url("Img/volume.png")`;
+    } else {
+        volumeButton.style.backgroundImage = `url("Img/mute.png")`;
+    }
 }

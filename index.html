@@ -46,11 +46,19 @@
         <div class="close-btn" onclick="togglePopup('popup-2')">&times;</div>
         <h1 class="instructions-title">Settings</h1>
         <ul class="instructions-list" style="list-style-type: disc;">
-          <a class = "game-link" onclick="localStorage.setItem('levelsUnlocked', 1) ; progressAlert()">
+          <a class = "game-link" onclick="localStorage.setItem('levelsUnlocked', 1); progressAlert()">
             Reset Progress
             <script>
               function progressAlert() {
                 alert("Progress Reset!");
+              }
+            </script>
+          </a>
+          <a class = "game-link" onclick="localStorage.setItem('levelsUnlocked', 12); progressAlert()">
+            Unlock All Levels
+            <script>
+              function progressAlert() {
+                alert("All levels unlocked!");
               }
             </script>
           </a>
