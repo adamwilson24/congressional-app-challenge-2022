@@ -14,7 +14,7 @@
   <main style="overflow: hidden";>
     <h1 class="game-title">MATHWARE</h1>
     <!--temporary title>--> 
-    <a href="level.html" class="play-button">Play</a>
+    <a onclick="fade()" class="play-button">Play</a>
     
     <div class="popup" id="popup-1">
       <div class="overlay" onclick="togglePopup('popup-1')"></div>
@@ -46,18 +46,18 @@
         <div class="close-btn" onclick="togglePopup('popup-2')">&times;</div>
         <h1 class="instructions-title">Settings</h1>
         <ul class="instructions-list" style="list-style-type: disc;">
-          <a class = "game-link" onclick="localStorage.setItem('levelsUnlocked', 1); progressAlert()">
+          <a class = "game-link" onclick="localStorage.setItem('levelsUnlocked', 1); progressAlert1()">
             Reset Progress
             <script>
-              function progressAlert() {
+              function progressAlert1() {
                 alert("Progress Reset!");
               }
             </script>
           </a>
-          <a class = "game-link" onclick="localStorage.setItem('levelsUnlocked', 12); progressAlert()">
+          <a class = "game-link" onclick="localStorage.setItem('levelsUnlocked', 12); progressAlert2()">
             Unlock All Levels
             <script>
-              function progressAlert() {
+              function progressAlert2() {
                 alert("All levels unlocked!");
               }
             </script>
@@ -75,6 +75,7 @@
       &copy; Copyright 2022 - Adam Wilson, Mason McManus, Carter Lator <br />
       Congressional App Challenge 2022
     </div>
+    <div id="fader"></div>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>

@@ -21,7 +21,7 @@ const choices = [choiceButtonA, choiceButtonB, choiceButtonC, choiceButtonD];
 const levelText = document.querySelector("#level-title");
 const header = document.querySelector("#header");
 
-const tl = new TimelineMax();
+//const tl = new TimelineMax();
 
 var value = 0;
 
@@ -64,9 +64,12 @@ function updateProgressBar(progressBar, num) {
 }
 
 function refreshPage() {
-for(var i = 0; i < choices.length; i ++) {
-    choices[i].style.opacity = 0;
-}
+    for(var i = 0; i < choices.length; i ++) {
+        choices[i].style.opacity = 0;
+    }
+
+    volumeButton.style.display = "none";
+    volumeButton.style.opacity = 0;
 
     document.getElementById("level-title").innerHTML = "Level " + levelNumber;
 
@@ -74,6 +77,9 @@ tl.fromTo(levelText, 1, { x: "-25vw", opacity: 0 }, { x: 0, ease: Power2.easeOut
 tl.fromTo(levelText, 1.5, { fontSize: "30vh", marginTop: "25vh" }, { fontSize: "8vh", marginTop: 0, ease: Power2.easeOut}, "+= 0.5");
 
 tl.fromTo(header, 1, { y: "-5vh", opacity: 0 }, { y: 0, ease: Power2.easeOut, opacity: 1 }, "-=.75");
+
+volumeButton.style.display = "block";
+tl.fromTo(volumeButton, 0.25, {transform: `rotate(60deg)`, opacity: 0 }, { transform: `rotate(0deg)`, ease: Power2.easeOut, opacity: 1 }, "-=1");
 
 tl.fromTo(questionText, 1, { x: "-25vw", opacity: 0 }, { x: 0, ease: Power2.easeOut, opacity: 1 });
 
@@ -251,8 +257,8 @@ async function checkAnswer(num) {
             incorrectSound.play();
         }
     }
-    tl.fromTo(overlay, 1, { x: "-100vw", opacity: 0 }, { x: 0, ease: Power2.easeOut, opacity: 1 });
-    tl.fromTo(overlay, 1, { y:0, opacity: 1 }, { y: "-100vh", ease: Power2.easeOut, opacity: 0 }, "+=1");
+    tl.fromTo(overlay, 1, { x: "-100vw", opacity: 0, fontSize: 0 }, { x: 0, ease: Power2.easeOut, opacity: 1, fontSize: "12em" });
+    tl.fromTo(overlay, 1, { y:0, opacity: 1}, { y: "-100vh", ease: Power2.easeOut, opacity: 0}, "+=1");
     await sleep(1000)
     questionText.style.opacity = 0;
     await sleep(2000);

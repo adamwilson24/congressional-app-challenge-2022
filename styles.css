@@ -5,6 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f8f7ff;
+  user-select: none;
 }
 
 audio {
@@ -190,7 +191,8 @@ audio {
   font-size: 2em;
   text-align: center;
   border-radius: 1vw;
-  transition-duration: 0.3s;
+  transition: background-color 0.3s, scale 0.3s;
+  opacity: 0;
 }
 
 .level-button-unclickable{
@@ -199,7 +201,7 @@ audio {
   height: 10vh;
   padding: 1vw;
   border-radius: 1vw;
-  transition-duration: 0.5s;
+  transition: background-color 0.5s, scale 0.3s;
   background-color: rgba(33, 33, 33, 0.7);
   cursor: not-allowed;
   background-image: url("lock.svg");
@@ -241,6 +243,7 @@ audio {
   color: #f8f7ff;
   text-align: center;
   font-size: 1em;
+  opacity: 0;
 }
 
 .play-button {
@@ -555,4 +558,14 @@ audio {
   cursor: pointer;
   background-color: rgb(0, 247, 255);
   filter: invert() brightness(1);
+}
+
+#fader {
+  background-color: #1D3557;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: none;
 }
